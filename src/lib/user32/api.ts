@@ -2,8 +2,6 @@ import { DModel as M, DTypes as W, FModel as FM } from 'win32-def'
 
 
 export interface Win32Fns extends FM.DllFuncsModel {
-  BringWindowToTop(hWnd: M.HWND): M.BOOL
-
   ClientToScreen(hWnd: M.HWND, lpPoint: M.LPPOINT): M.BOOL
 
   /** https://docs.microsoft.com/en-us/windows/desktop/api/winuser/nf-winuser-closewindow */
@@ -47,13 +45,9 @@ export interface Win32Fns extends FM.DllFuncsModel {
 
   GetClassInfoExW(hinst: M.HINSTANCE | null, lpszClass: M.LPCTSTR, LPWNDCLASSEX: M.LPWNDCLASSEX): M.BOOL
 
-  GetForegroundWindow(): M.HWND
-
   GetMessageW(lpMsg: M.LPMSG, HWND: M.HWND | null, wMsgFilterMin: M.UINT, wMsgFilterMax: M.UINT): M.BOOL
 
   GetParent(hWnd: M.HWND): M.HWND
-
-  GetTopWindow(hWnd: M.HWND): M.HWND;
 
   GetWindow(hWnd: M.HWND, uCmd: M.UINT): M.HWND
 
@@ -109,8 +103,6 @@ export interface Win32Fns extends FM.DllFuncsModel {
 
 
 export const apiDef: FM.DllFuncs = {
-  BringWindowToTop: [W.BOOL, [W.HWND] ],
-  
   /** url: https://docs.microsoft.com/en-us/windows/desktop/api/winuser/nf-winuser-clienttoscreen */
   ClientToScreen: [W.BOOL, [W.HWND, W.LPPOINT] ],
 
@@ -138,13 +130,9 @@ export const apiDef: FM.DllFuncs = {
 
   GetClassInfoExW: [W.BOOL, [W.HINSTANCE, W.LPCTSTR, W.LPWNDCLASSEX] ],
 
-  GetForegroundWindow: [W.HWND, [] ],
-
   GetMessageW: [W.BOOL, [W.LPMSG, W.HWND, W.UINT, W.UINT] ],
 
   GetParent: [W.HWND, [W.HWND] ],
-
-  GetTopWindow: [W.HWND, [W.HWND] ],
 
   GetWindow: [W.HWND, [W.HWND, W.UINT] ],
 
