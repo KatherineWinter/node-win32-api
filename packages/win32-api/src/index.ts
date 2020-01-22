@@ -31,4 +31,6 @@ export { Comctl32 }
 export { Ntdll }
 
 export * from './lib/model'
+export * from './lib/fixed-buffer'
+export * from './lib/data-struct-ext'
 
